@@ -312,28 +312,28 @@ if (isset($_SESSION['signup_message'])) {
 		</div>
 	<?php endif; ?>
 
-        <form action="register.php" method="post">
+        <form action="register.php" method="post" autocomplete="off">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" placeholder="Enter Email">
+                <input type="text" name="email" class="form-control" autocomplete="off" placeholder="Enter Email" value="<?php echo htmlspecialchars($email); ?>">
                                 <span class="text-danger"><?php echo $email_err; ?></span>
             </div>
 
             <div class="form-group">
                 <label>Member Name</label>
-                <input type="text" name="member_name" class="form-control" placeholder="Enter Member Name">
+                <input type="text" name="member_name" class="form-control" autocomplete="off" placeholder="Enter Member Name" value="<?php echo htmlspecialchars($member_name); ?>">
                                 <span class="text-danger"><?php echo $member_name_err; ?></span>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                <input type="password" name="password" class="form-control" autocomplete="new-password" placeholder="Enter Password">
                                 <span class="text-danger"><?php echo $password_err; ?></span>
             </div>
 
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="text" name="phone_number" class="form-control" placeholder="Enter Phone Number" maxlength="10">
+                <input type="text" name="phone_number" class="form-control" autocomplete="off" placeholder="Enter Phone Number" maxlength="10" value="<?php echo htmlspecialchars($phone_number); ?>">
                                 <span class="text-danger"><?php echo $phone_number_err; ?></span>
             </div>
 

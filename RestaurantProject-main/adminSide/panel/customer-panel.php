@@ -4,7 +4,19 @@ require_once '../posBackend/checkIfLoggedIn.php';
 ?>
 <?php include '../inc/dashHeader.php'; ?>
     <style>
-        .wrapper{ width: 60%; padding-left: 200px; padding-top: 20px  }
+        .wrapper{ max-width:90%; padding-left:220px; padding-top:20px }
+        .table-wrapper{overflow-x:auto;}
+        .table-bordered thead th{position:sticky;top:0;background:#f8f9fa;z-index:10;}
+        .table-bordered tbody tr:hover{background:#f2f2f2;}
+        .fa-trash{color:#d63031;transition:.2s;}
+        .fa-trash:hover{color:#ff5e5e;transform:scale(1.1);} 
+        /* Card layout */
+        .search-container, .table-container{background:#fff;border-radius:10px;box-shadow:0 0.15rem 1.75rem rgba(58,59,69,.15);padding:1.5rem;margin-bottom:2rem;}
+        .table-container{overflow-x:auto;}
+        .action-btn{font-size:1.1rem;margin:0 5px;transition:.2s;}
+        .action-btn:hover{transform:scale(1.1);} 
+        .delete-btn{color:#ff6b6b;}
+        .delete-btn:hover{color:#c0392b;}
 
         /* Modern message styling */
         .modern-message {
@@ -38,28 +50,29 @@ require_once '../posBackend/checkIfLoggedIn.php';
 <div class="wrapper">
     <div class="container-fluid pt-5 pl-600">
         <div class="row">
-            <div class="m-50">
+            <div class="m-50"><div class="search-container">
                 <div class="mt-5 mb-3">
-                    <h2 class="pull-left">Membership Details</h2>
-                    <a href="../customerCrud/createCust.php" class="btn btn-outline-dark"><i class="fa fa-plus"></i> Add Membership</a>
+                    <h2 class="pull-left fw-bold text-secondary">Membership Management</h2>
+                    <a href="../customerCrud/createCust.php" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Membership</a>
                 </div>
                 <div class="mb-3">
                     <form method="POST" action="#">
                         <div class="row">
                             <div class="col-md-6">
-                                <input required type="text" id="search" name="search" class="form-control" placeholder="Enter Member ID, Name">
+                                <input required type="text" id="search" name="search" class="form-control" placeholder="Search by Member ID or Name">
                             </div>
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-dark">Search</button>
+                                <button type="submit" class="btn btn-primary"><i class='fa fa-search'></i> Search</button>
                             </div>
                             <div class="col" style="text-align: right;" >
-                                <a href="customer-panel.php" class="btn btn-light">Show All</a>
+                                <a href="customer-panel.php" class="btn btn-outline-secondary"><i class='fa fa-eye'></i> Show All</a>
                             </div>
                         </div>
                     </form>
-                </div>
+                </div></div>
                 
-                <?php
+                <div class="table-container">
+<?php
                 // Get message from session if it exists
                 $membership_message = null;
                 if (isset($_SESSION['membership_message'])) {
@@ -118,7 +131,7 @@ require_once '../posBackend/checkIfLoggedIn.php';
 
                 if ($result = mysqli_query($link, $sql)) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo '<table class="table table-bordered table-striped">';
+                        echo '<div class="table-responsive"><table class="table table-hover">';
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th style='width:7em;'>Member Id</th>";
@@ -135,17 +148,17 @@ require_once '../posBackend/checkIfLoggedIn.php';
                             echo "<tr>";
                             echo "<td>" . $row['member_id'] . "</td>";
                             echo "<td>" . $row['member_name'] . "</td>";
-                            echo "<td>" . $row['points'] . "</td>";
+                            echo "<td><span class='badge bg-primary'>" . $row['points'] . "</span></td>";
                             echo "<td>" . $row['account_id'] . "</td>";
                             //echo "<td>" . $row['email'] . "</td>";
                             //echo "<td>" . $row['phone_number'] . "</td>";
                             echo "<td>";
-                            echo '<a href="../customerCrud/deleteCustomerVerify.php?id=' . $row['member_id'] . '" title="Delete Record" data-toggle="tooltip" onclick="return confirm(\'Admin permission Required!\\n\\nAre you sure you want to delete this Customer?\\n\\nThis will alter other modules related to this Customer!\\n\')"><span class="fa fa-trash text-black"></span></a>';
+                            echo '<a href="../customerCrud/deleteCustomerVerify.php?id=' . $row['member_id'] . '" title="Delete Record" class="action-btn delete-btn" onclick="return confirm(\'Admin permission Required!\\n\\nAre you sure you want to delete this Customer?\\n\\nThis will alter other modules related to this Customer!\\n\')"><i class="fa fa-trash"></i></a>';
                             echo "</td>";
                             echo "</tr>";
                         }
                         echo "</tbody>";
-                        echo "</table>";
+                        echo "</table></div></div>";
                         // Free result set
                         mysqli_free_result($result);
                     } else {

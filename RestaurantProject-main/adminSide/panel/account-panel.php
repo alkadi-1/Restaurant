@@ -3,8 +3,24 @@ session_start(); // Ensure session is started
 require_once '../posBackend/checkIfLoggedIn.php';
 ?>
 <?php include '../inc/dashHeader.php'; ?>
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <style>
-        .wrapper{ width: 1300px; padding-left: 200px; padding-top: 20px  }
+        .wrapper{ width: calc(100% - 240px); padding-left: 240px; padding-top: 20px }
+        /* Table enhancements */
+        .table-wrapper{ width:100%; overflow-x:auto; }
+        .table-bordered thead th{
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            z-index: 10;
+        }
+        .table-bordered tbody tr:hover{ background-color: #f2f2f2; }
+        .fa-trash{ color:#d63031; transition:.2s; }
+        .fa-trash:hover{ color:#ff5e5e; transform:scale(1.1);}
     </style>
 
 <div class="wrapper">
@@ -12,22 +28,22 @@ require_once '../posBackend/checkIfLoggedIn.php';
         <div class="row">
             <div class="m-50">
                 <div class="mt-5 mb-3">
-                    <h2 class="pull-left">Account Details</h2>
-                    <a href="../staffCrud/createStaff.php" class="btn btn-outline-dark"><i class="fa fa-plus"></i> Add Staff</a>
-                    <a href="../customerCrud/createCust.php" class="btn btn-outline-dark"><i class="fa fa-plus"></i> Add Memberships</a>
+                    <h2 class="pull-left fw-bold text-secondary">Account Management</h2>
+                    <a href="../staffCrud/createStaff.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Staff</a>
+                    <a href="../customerCrud/createCust.php" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Membership</a>
                 </div>
                 
                 <div class="mb-3">
                     <form method="POST" action="#">
                         <div class="row">
                             <div class="col-md-6">
-                                <input required type="text" id="search" name="search" class="form-control" placeholder="Enter Account ID, Email">
+                                <input required type="text" id="search" name="search" class="form-control" placeholder="Search by Account ID or Email">
                             </div>
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-dark">Search</button>
+                                <button type="submit" class="btn btn-primary"><i class='fa fa-search'></i> Search</button>
                             </div>
                             <div class="col" style="text-align: right;" >
-                                <a href="account-panel.php" class="btn btn-light">Show All</a>
+                                <a href="account-panel.php" class="btn btn-outline-secondary"><i class='fa fa-eye'></i> Show All</a>
                             </div>
                         </div>
                     </form>
@@ -60,7 +76,7 @@ require_once '../posBackend/checkIfLoggedIn.php';
 
                 if ($result = mysqli_query($link, $sql)) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo '<table id="datatablesSimple" class="table table-bordered table-striped">';
+                        echo '<div class="table-wrapper"><table id="datatablesSimple" class="table table-bordered table-striped">';
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th>Account ID</th>";
@@ -69,27 +85,28 @@ require_once '../posBackend/checkIfLoggedIn.php';
                         echo "<th>Phone Number</th>";
                         echo "<th>Password</th>";
                         //echo "<th>Account Type</th>"; // Display account type
-                        echo "<th>Delete</th>"; // Uncommented delete column header
+                        echo "<th style='width:6em;'>Actions</th>"; // Uncommented delete column header
                         echo "</tr>";
                         echo "</thead>";
                         echo "<tbody>";
                         while ($row = mysqli_fetch_array($result)) {
                             echo "<tr>";
                             echo "<td>" . $row['account_id'] . "</td>";
-                            echo "<td>" . $row['email'] . "</td>";
-                            echo "<td>" . $row['register_date'] . "</td>";
-                            echo "<td>" . $row['phone_number'] . "</td>";
-                            echo "<td>" . substr($row['password'], 0, strlen($row['password']) / 2) . "...</td>"; // Display only half of the password
+                            echo "<td>" . $row['email'] . " <button class='btn btn-sm btn-light copy-mail' data-mail='".$row['email']."' title='Copy Email'><i class='fa fa-copy'></i></button></td>";
+                            echo "<td><span class='badge bg-info text-dark'>" . $row['register_date'] . "</span></td>";
+                            echo "<td><a href='tel:" . $row['phone_number'] . "'><span class='badge bg-success text-dark'>" . $row['phone_number'] . "</span></a></td>";
+                            $masked=substr($row['password'],0,6).'••••';
+                            echo "<td><span class='masked-pass' data-pass='".$row['password']."'>Click to reveal</span></td>"; 
                             //echo "<td>" . ucfirst($row['account_type']) . "</td>"; // Display account type
                             echo "<td>"; // Uncommented delete column cell
                             //  $deleteSQL = "DELETE FROM Accounts WHERE account_id = '" . $row['account_id'] . "';";
-                            echo '<a href="../accountCrud/deleteAccountVerify.php?id=' . $row['account_id'] . '" title="Delete Record" data-toggle="tooltip" '
-                                    . 'onclick="return confirm(\'Admin permission Required!\\n\\nAre you sure you want to delete this Account?\\n\\nThis will alter other modules related to this Account!\\n\')"><span class="fa fa-trash text-black"></span></a>';
+                            echo '<a href="../accountCrud/deleteAccountVerify.php?id=' . $row['account_id'] . '" title="Delete Record" class="btn btn-outline-danger btn-sm" '
+                                    . 'onclick="return confirm(\'Admin permission Required!\\n\\nAre you sure you want to delete this Account?\\n\\nThis will alter other modules related to this Account!\\n\')"><i class="fa fa-trash"></i></a>';
                             echo "</td>"; // Uncommented delete column cell close
                             echo "</tr>";
                         }
                         echo "</tbody>";
-                        echo "</table>";
+                        echo "</table></div>";
                         // Free result set
                         mysqli_free_result($result);
                     } else {
@@ -112,11 +129,31 @@ require_once '../posBackend/checkIfLoggedIn.php';
 <script>
     $(document).ready(function() {
         $('#datatablesSimple').DataTable({
-            "paging": false,    // Disable pagination
+            "paging": true,
+            "pageLength": 50,
+            "lengthMenu": [ [10,25,50,100,-1], [10,25,50,100,"All"] ],
             "info": false,      // Disable 'Showing x of y entries' info
             "searching": false, // Disable DataTables default search box as you have a custom one
-            "scrollY": "500px", // Add a vertical scrollbar if content exceeds 500px
-            "scrollCollapse": true // Collapse the table if the content is shorter than scrollY
+
+            "autoWidth": false,
+
         });
+    });
+    // Copy email
+    $(document).on('click','.copy-mail',function(){
+        const mail=$(this).data('mail');
+        navigator.clipboard.writeText(mail);
+        $(this).tooltip({title:'Copied!',trigger:'manual'}).tooltip('show');
+        setTimeout(()=>{$(this).tooltip('hide');},1000);
+    });
+    // Reveal password tooltip
+    $(document).on('click','.masked-pass',function(){
+        const $el=$(this);
+        if($el.text()==='Click to reveal'){
+            $el.text($el.data('pass'));
+        }else{
+            $el.text('Click to reveal');
+        }
+            
     });
 </script>

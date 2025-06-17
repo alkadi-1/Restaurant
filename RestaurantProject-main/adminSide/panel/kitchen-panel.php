@@ -12,7 +12,15 @@ $result = mysqli_query($link, $query);
     <link href="../css/pos.css" rel="stylesheet" />
     <meta http-equiv="refresh" content="5">
 
-<div class="wrapper" style="width: 1300px; padding-left: 200px; padding-top: 20px">
+<style>
+.wrapper{max-width:90%;padding-left:220px;padding-top:20px}
+.table-wrapper{overflow-x:auto;}
+.table-bordered thead th{position:sticky;top:0;background:#f8f9fa;z-index:10;}
+.table-bordered tbody tr:hover{background:#f2f2f2;}
+.badge-wait{background:#fdcb6e;color:#2d3436;}
+.badge-end{background:#55efc4;color:#2d3436;}
+</style>
+<div class="wrapper">
     <div class="container-fluid pt-5 pl-600 mt-5">
           <div class="">
             <div class="col" style="text-align: left; display: flex; justify-content: space-between;">
@@ -21,7 +29,7 @@ $result = mysqli_query($link, $query);
             </div>
           </div>
 
-        <table class="table table-bordered ">
+        <div class="table-wrapper"><table class="table table-bordered table-striped">
             <thead>
                 
                 <tr>
@@ -55,12 +63,16 @@ $result = mysqli_query($link, $query);
                         echo '<td>' . $kitchen_id . '</td>';
                         echo '<td>' . $table_id . '</td>';
                         echo '<td>' . $item_name . '</td>';
-                        echo '<td>' . $quantity . '</td>';
-                        echo '<td>' . $time_submitted . '</td>';
-                        echo '<td>' . ($time_ended ?: 'Not Ended') . '</td>';
+                        echo '<td><span class="badge bg-primary">' . $quantity . '</span></td>';
+                        echo '<td><span class="badge bg-info text-dark">' . $time_submitted . '</span></td>';
+                        if($time_ended){
+                            echo '<td><span class="badge badge-end">'.$time_ended.'</span></td>';
+                        }else{
+                            echo '<td><span class="badge badge-wait">Not Ended</span></td>';
+                        }
                         echo '<td>';
                         if (!$time_ended) {
-                            echo '<a href="../posBackend/kitchenBackend/kitchen-panel-back.php?action=set_time_ended&kitchen_id=' . $kitchen_id . '" class="btn btn-danger">Done</a>';
+                            echo '<a href="../posBackend/kitchenBackend/kitchen-panel-back.php?action=set_time_ended&kitchen_id=' . $kitchen_id . '" class="btn btn-outline-danger btn-sm">Done</a>';
                         }
                         
                         echo '</td>';
@@ -71,7 +83,7 @@ $result = mysqli_query($link, $query);
                 }
                 ?>
             </tbody>
-        </table>
+        </table></div>
     </div>
 </div>
 
