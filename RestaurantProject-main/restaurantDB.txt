@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS Menu (
   item_category VARCHAR(255),
   item_price DECIMAL(10, 2),
   item_description VARCHAR(255)
+  item_image VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS Accounts (
