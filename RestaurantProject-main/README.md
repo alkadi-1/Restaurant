@@ -48,12 +48,7 @@
 
 | Role | Email | Password |
 |---|---|---|
-| Customer | dadsvawvid@gmail.com | david4pass |
-| Customer | zoe@gmail.com | passworddef |
-| Customer | jackie@gmail.com | passwordstu |
 | Staff | 1 | password123 |
-| Staff | 10 | davidpa2ss |
-| Staff | 7 | robertpass |
 | Admin | 99999 | 12345 |
 
 ## Screenshots
@@ -77,14 +72,6 @@
 
 
 
-## Contributors
-
-| Name | Github |
-|---|---|
-| Bryan | https://github.com/BryanTheLai |
-| Yong | https://github.com/ahhyang |
-| Kevin | https://github.com/kevin07212004 |
-| Edzer | https://github.com/edsaur |
 
 ## If you want to put a password for the database, change the config.php files.
 
