@@ -1,0 +1,89 @@
+/* Responsive Styles */
+
+/* Tablets and larger */
+@media only screen and (min-width: 768px) {
+    /* Service items */
+    #services .service-item {
+        flex-basis: 45%;
+        margin: 2.5%;
+    }
+
+    /* Contact items */
+    #contact .contact-item {
+        width: 30%;
+        margin: 1%;
+    }
+
+    /* Project items */
+    #projects .project-item {
+        flex-direction: row;
+        height: 400px;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    #projects .all-projects .project-info {
+        height: 100%;
+    }
+
+    #projects .all-projects .project-img {
+        height: 100%;
+    }
+
+    /* About section */
+    #about .about {
+        flex-direction: row;
+    }
+
+    #about .about .col-left {
+        width: 600px;
+        height: 400px;
+        padding-left: 60px;
+    }
+
+    #about .about .col-left .about-img::after {
+        left: -45px;
+        top: 34px;
+        height: 98%;
+        width: 98%;
+        border: 10px solid gray;
+    }
+
+    #about .about .col-right {
+        text-align: left;
+        padding: 30px;
+    }
+
+    #about .about .col-right h1 {
+        text-align: left;
+    }
+}
+
+/* Desktop and larger */
+@media only screen and (min-width: 1200px) {
+    /* Header */
+    #header .hamburger {
+        display: none;
+    }
+
+    #header .nav-list ul {
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    #header .nav-list ul li {
+        display: inline-block;
+    }
+
+    #header .nav-list ul li a {
+        font-size: 1.8rem;
+    }
+
+    #header .nav-list ul a::after {
+        display: none;
+    }
+}

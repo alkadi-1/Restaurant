@@ -1,0 +1,237 @@
+/* Modern Menu Styles */
+#menu {
+    padding: 100px 20px 60px;  /* Increased top padding from 60px to 100px */
+    background: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title span {
+    color: #e74c3c;
+}
+
+/* Menu Filter Buttons */
+.menu-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: none;
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #e74c3c;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0;
+}
+
+.menu-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #e74c3c;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover::before {
+    transform: scaleX(1);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-img {
+    height: 280px;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    object-fit: contain;
+    background-blend-mode: multiply;
+}
+
+.menu-item:hover .menu-item-img {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Removed overlay and view image button styles */
+
+.menu-item-details {
+    padding: 24px;
+    flex-grow: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.menu-item-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.menu-item-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e74c3c;
+    margin-left: 15px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover .menu-item-price {
+    color: #c0392b;
+}
+
+.menu-item-category {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: #fff;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu-item-desc {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 12px 0 0;
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #menu {
+        padding: 40px 15px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .menu-filter {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 10px 0;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .menu-filter::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .menu-item-img {
+        height: 180px;
+    }
+}
