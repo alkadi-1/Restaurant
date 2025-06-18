@@ -7,6 +7,13 @@ session_start(); // Ensure session is started
 require_once "../config.php";
  
 $input_item_id = $item_id_err = $item_id = "";
+
+// Get message from session if it exists
+$menu_message = null;
+if (isset($_SESSION['menu_message'])) {
+    $menu_message = $_SESSION['menu_message'];
+    unset($_SESSION['menu_message']); // Clear after display
+}
  
 // Processing form data when form is submitted
 if(isset($_POST['submit'])){
@@ -28,12 +35,31 @@ if(isset($_POST['submit'])){
     <title>Create New Item</title>
     <style>
         .wrapper{ width: 1300px; padding-left: 200px; padding-top: 80px  }
+
+        /* Modern message styling */
+        .modern-message {
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+            animation: fadeIn .5s ease-in-out;
+        }
+        .modern-message.success{background:#ccffcc;color:#2ecc71;border:1px solid #2ecc71;}
+        .modern-message.error{background:#ffcccc;color:#d63031;border:1px solid #d63031;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
     </style>
 </head>
 
  <div class="wrapper" >
     <h3>Create New Item</h1>
     <p>Please fill Items Information Properly </p>
+    <?php if ($menu_message): ?>
+        <div class="modern-message <?php echo $menu_message['type']; ?>">
+            <?php echo $menu_message['text']; ?>
+        </div>
+    <?php endif; ?>
     
 <form method="POST" action="success_create.php" class="ht-600 w-50">
     

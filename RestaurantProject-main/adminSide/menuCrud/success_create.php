@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../config.php";
 
 // Check if the form is submitted
@@ -51,82 +52,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 
+    // Store feedback in session for display on form page
+    $_SESSION['menu_message'] = [
+        'type' => ($cardClass === 'alert-success') ? 'success' : 'error',
+        'text' => strip_tags($message)
+    ];
+
     // Close the check statement and the connection
     $check_stmt->close();
     $conn->close();
+
+    // Redirect back to the create item form
+    header("Location: ../panel/menu-panel.php");
+    exit();
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
-    <style>
-        /* Your custom CSS styles for the success message card here */
-        body {
-            text-align: center;
-            padding: 40px 0;
-            background: #EBF0F5;
-        }
-        h1 {
-            color: #88B04B;
-            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-            font-weight: 900;
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #404F5E;
-            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-            font-size: 20px;
-            margin: 0;
-        }
-        i.checkmark {
-            color: #9ABC66;
-            font-size: 100px;
-            line-height: 200px;
-            margin-left: -15px;
-        }
-        .card {
-            background: white;
-            padding: 60px;
-            border-radius: 4px;
-            box-shadow: 0 2px 3px #C8D0D8;
-            display: inline-block;
-            margin: 0 auto;
-        }
-        /* Additional CSS styles based on success/error message */
-        .alert-success {
-            /* Customize the styles for the success message card */
-            background-color: <?php echo $bgColor; ?>;
-        }
-        .alert-success i {
-            color: #5DBE6F; /* Customize the checkmark icon color for success */
-        }
-        .alert-danger {
-            /* Customize the styles for the error message card */
-            background-color: #FFA7A7; /* Custom background color for error */
-        }
-        .alert-danger i {
-            color: #F25454; /* Customize the checkmark icon color for error */
-        }
-        .custom-x {
-            color: #F25454; /* Customize the "X" symbol color for error */
-            font-size: 100px;
-            line-height: 200px;
-        }
-            .alert-box {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .alert-icon {
-            padding-bottom: 20px;
-        }
-    
     </style>
 </head>
 <body>
+    <div id="modernMessage" class="modern-message <?php echo ($cardClass === 'alert-success') ? 'success' : 'error'; ?>">
+        <?php echo strip_tags($message); ?>
+    </div>
+    <script>
+        const msg=document.getElementById('modernMessage');
+        if(msg){
+            setTimeout(()=>{
+                msg.style.opacity='0';
+                setTimeout(()=>{ window.location.href='createItem.php'; },500);
+            },2000);
+        }
+    </script>
     <div class="card <?php echo $cardClass; ?>" style="display: none;">
         <div style="border-radius: 200px; height: 200px; width: 200px; background: #F8FAF5; margin: 0 auto;">
             <?php if ($iconClass === 'fa-check-circle'): ?>

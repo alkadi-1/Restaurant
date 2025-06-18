@@ -5,6 +5,10 @@ require_once '../posBackend/checkIfLoggedIn.php';
 <?php include '../inc/dashHeader.php'; ?>
     <style>
         .wrapper{ max-width:90%; padding-left:220px; padding-top:20px }
+        .modern-message{border-radius:8px;padding:12px 18px;text-align:center;font-weight:600;box-shadow:0 4px 8px rgba(0,0,0,.1);animation:fadeIn .5s ease-in-out;}
+        .modern-message.success{background:#ccffcc;color:#2ecc71;border:1px solid #2ecc71;}
+        .modern-message.error{background:#ffcccc;color:#d63031;border:1px solid #d63031;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
         .table-wrapper{overflow-x:auto;}
         .table thead th{position:sticky;top:0;background:#f8f9fa;z-index:10;}
         .table tbody tr:hover{background:#f2f2f2;}
@@ -29,6 +33,11 @@ require_once '../posBackend/checkIfLoggedIn.php';
     <div class="container-fluid pt-5 pl-600">
         <div class="row">
             <div class="m-50"><div class="search-container">
+                <?php if(isset($_SESSION['menu_message'])){ $mm=$_SESSION['menu_message']; unset($_SESSION['menu_message']); ?>
+        <div class="modern-message <?php echo $mm['type']; ?>" style="margin-bottom:20px;">
+            <?php echo htmlspecialchars($mm['text']); ?>
+        </div>
+    <?php } ?>
                 <div class="mt-5 mb-3">
                     <h2 class="pull-left">Items Details</h2>
                     <a href="../menuCrud/createItem.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Item</a>

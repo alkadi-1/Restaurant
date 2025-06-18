@@ -134,44 +134,14 @@ INSERT INTO Menu (item_id, item_name, item_type, item_category, item_price, item
 VALUES
 
 ('C1', 'Kamikaze', 'Classic Cocktails', 'Drinks', 28, 'cocktails', '685005b64329d.png'),
-('C2', 'Singapore Sling', 'Classic Cocktails', 'Drinks', 29, 'cocktails', '68500d6739eab.png'),
-('C3', 'Long Island Iced Tea', 'Classic Cocktails', 'Drinks', 29, 'cocktails', '685010ba31d1e.png'),
-('C4', 'Lady on the Beach', 'Classic Cocktails', 'Drinks', 29, 'cocktails','6850152f20f62.png'),
-('C5', 'Margarita', 'Classic Cocktails', 'Drinks', 29, 'cocktails','685035953226d.png'),
+('C2', 'Singapore Sling', 'Classic Cocktails', 'Drinks', 29, 'cocktails', '68500d6739eab.png');
 
 
 -- Accounts table
 INSERT INTO Accounts (email, register_date, phone_number, password)
-VALUES ('john@gmail.com', '2023-08-31', '+1234567890', 'password123'),
-       ('susan@gmail.com', '2023-08-30', '+1987654321', 'susanpassword'),
-       ('james@gmail.com', '2023-08-29', '+18887776666', 'jamespass'),
-       ('alice@gmail.com', '2023-08-28', '+15555555555', 'alicepassword'),
-       ('mike@gmail.com', '2023-08-27', '+14444444444', 'mikepass'),
-       ('lisa@gmail.com', '2023-08-26', '+13333333333', 'lisapassword'),
-       ('robert@gmail.com', '2023-08-25', '+12222222222', 'robertpass'),
-       ('emily@gmail.com', '2023-08-24', '+16666666666', 'emilypassword'),
-       ('david@gmail.com', '2023-08-23', '+1993219999', 'davidp321ass'),
-       ('ddwd@gmail.com', '2023-08-23', '+1999999329999', 'davidpa2ss'),
-       ('dadsvawvid@gmail.com', '2023-08-23', '+12234132199', 'david4pass'),
-       ('davdavid@gmail.com', '2023-08-23', '+123239999', 'davidp13ass'),
-       ('davvdasid@gmail.com', '2023-08-23', '+1995324319999', 'david2pass'),
-       ('321david@gmail.com', '2023-08-23', '+1942199999', 'davidpa52ss'),
-	('32avid@gmail.com', '2023-08-23', '+1942193429999', 'da2332ss'),
-	('321da543vid@gmail.com', '2023-08-23', '+1942132199999', 'dav43a52ss'),
-	('3211234avid@gmail.com', '2023-08-23', '+194213599999', '32533pa52ss'),
-	('321543avid@gmail.com', '2023-08-23', '+1942154399999', '754dpa52ss'),
-	('rbsjsd@gmail.com', '2023-08-23', '+131351241239', '41f2s'),
-       ('ol435143ivia@gmail.com', '2023-08-22', '+18888888888', 'oliviapass4215word'),
-    ('robber@gmail.com', '2023-09-01', '+1234567890', 'password123'),
-    ('jean@gmail.com', '2023-09-02', '+2345678901', 'password456'),
-    ('emily@gmail.com', '2023-09-03', '+3456789012', 'password789'),
-    ('robert@gmail.com', '2023-09-04', '+4567890123', 'passwordabc'),
-    ('zoe@gmail.com', '2023-09-05', '+5678901234', 'passworddef'),
-    ('lisa@gmail.com', '2023-09-06', '+6789012345', 'passwordghi'),
-    ('taylor@gmail.com', '2023-09-07', '+7890123456', 'passwordjkl'),
-    ('stephan@gmail.com', '2023-09-08', '+8901234567', 'passwordmno'),
-    ('bruce@gmail.com', '2023-09-09', '+9012345678', 'passwordpqr'),
-    ('jackie@gmail.com', '2023-09-10', '+0123456789', 'passwordstu');
+VALUES ('john@gmail.com', '2023-08-31', '+1234567890', '$2y$10$8hN26EXruoSmMUPFGSCycenfY7Mdif32MTeiomlI59g1RMfdzKOEO'),
+
+
 
 
 -- Staffs table
