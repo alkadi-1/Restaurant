@@ -1,57 +1,88 @@
-## Restaurant POS and Website
+## 🍽️ Restaurant POS and Website
 
-![Screenshot 2025-06-18 172203](https://github.com/user-attachments/assets/9d40045b-b143-4fb0-969a-d01425dd5ff4)
+![Screenshot](https://github.com/user-attachments/assets/9d40045b-b143-4fb0-969a-d01425dd5ff4)
 
-**Built with these:** 
+A comprehensive restaurant management system designed for **Johnny’s Dining & Bar**, combining a dynamic customer-facing website with a powerful staff-side point-of-sale (POS) panel.
+
+---
+
+### 🔧 Built With
+
 <p align="left">
-   <a href="#">
-      <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
-      <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
-      <img alt="MySQL" src="https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white"/>
-      <img alt="Php" src="https://img.shields.io/badge/php-474a8a?style=for-the-badge&logo=php&logoColor=white" />
-      <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black"/>
-   </a>
+   <img alt="HTML5" src="https://img.shields.io/badge/html5-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+   <img alt="CSS3" src="https://img.shields.io/badge/css3-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
+   <img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black"/>
+   <img alt="PHP" src="https://img.shields.io/badge/php-474a8a?style=for-the-badge&logo=php&logoColor=white"/>
+   <img alt="MySQL" src="https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white"/>
 </p>
 
-**Using:** Php 7.4
+> **PHP Version:** 7.4+
 
-**Features:**
-* **Customer Side (customerSide Folder):** Stores the website and allows customers to:
-    * Make reservations
-    * Register for accounts
-    * View profile points
-* **Staff Side (adminSide Folder):** Stores the panels and allows staff to:
-    * Take orders
-    * Send orders to the kitchen
-    * Process payments
-    * Print receipts
-    * Manage CRUD operations
-    * View user preferences
-    * Download reports
-    * View charts and graph
+---
 
+### ✅ Features
 
+#### 👤 Customer Side (`customerSide/`)
+- Make table reservations
+- Register and manage user accounts
+- View and collect loyalty points
+- Browse full menu with categories and dish images
 
-**Steps to run the project locally for Netbeans Manually:**
+#### 🧑‍🍳 Staff/Admin Side (`adminSide/`)
+- Manage table status and take orders
+- Process payments and print receipts
+- Track kitchen orders
+- Generate and download sales reports
+- View graphical analytics
+- Perform CRUD operations for menu, staff, and users
 
-1. Open XAMPP, start Apache and MySQL.
-2. Create a new project in Netbeans named `RestaurantProject`.
-3. Under categories, select PHP, the PHP Application under Projects.
-4. In Run Configuration, the "Run As" should be Local Web Site. (If your using Xampp).
-5. Then Finish.
-6. Delete the `setup_completed.flag` file in the RestaurantProject-main. (Extracted version)
-7. Copy all the folders and files (adminSide, customerSide, index.php, and restaurantDB.txt) from the RestaurantProject-main into the `Source Files` directory.
-8. Make sure there is no database named `restaurantdb`.
-9. Run the project.
+---
 
-## Example accounts
+### 🛠️ Fixed Issues (Maintenance Summary)
 
-| Role | Email | Password |
-|---|---|---|
-| Staff | 1 | password123 |
-| Admin | 99999 | 12345 |
+As part of a software maintenance task, several key enhancements and fixes were applied:
 
-## Screenshots
+- **🔐 Secure Password Storage:**  
+  Replaced insecure plaintext storage with secure PHP `password_hash()` and `password_verify()` methods.
+
+- **🏠 Broken Home Link Removed:**  
+  Fixed the navigation bar by removing a non-functional Home button and linking the logo to the homepage.
+
+- **🎨 Modernized Admin Interface:**  
+  Updated all admin modules with a unified and responsive design using Bootstrap cards, tables, and modals.
+
+- **🍽️ Redesigned Menu Layout:**  
+  Migrated the customer menu to a dedicated page with a clean, card-based layout, category filters, and dish images.
+
+- **💬 Improved Feedback Mechanism:**  
+  Replaced outdated banner messages with accessible, styled inline notifications that auto-dismiss.
+
+---
+
+### 🧪 Example Accounts
+
+| Role  | Username/Email | Password     |
+|-------|----------------|--------------|
+| Staff | `1`            | `password123`|
+| Admin | `99999`        | `12345`      |
+
+---
+
+### 🖥️ How to Run Locally with NetBeans
+
+1. Open **XAMPP** and start **Apache** & **MySQL**.
+2. Create a new PHP project in NetBeans (e.g., `RestaurantProject`).
+3. Set **Run As** to *Local Web Site* under the configuration settings.
+4. Delete the `setup_completed.flag` file from the extracted folder.
+5. Copy the contents of `RestaurantProject-main` into the `Source Files` folder.
+6. Import `restaurantdb.txt` into MySQL or manually create the database schema.
+7. Run the project in your browser via NetBeans or `http://localhost/RestaurantProject`.
+
+> ⚠️ **Note:** Ensure there's **no existing database named `restaurantdb`** before starting.
+
+---
+
+### 📸 Screenshots
 ![Screenshot 2025-06-18 172521](https://github.com/user-attachments/assets/a1f52a80-6871-4d30-8980-ae844c7daa89)
 ![image](https://github.com/user-attachments/assets/444eca73-f10b-4e66-b88e-dc8bf50bdb31)
 ![image](https://github.com/user-attachments/assets/962472d2-38b9-4bbb-a57d-12b9444feb95)
@@ -76,5 +107,13 @@
 ![image](https://github.com/user-attachments/assets/b12ce40f-2db6-437d-a7b6-c816ab52962f)
 ![image](https://github.com/user-attachments/assets/8019fbe5-aae2-49ef-88d5-1c9f7746d440)
 
+---
 
-## If you want to put a password for the database, change the config.php files.
+### 🔐 Database Credentials
+
+If you wish to apply a password for your local MySQL database connection, make sure to **edit the following files**:
+
+- `adminSide/inc/config.php`
+- `customerSide/inc/config.php`
+
+Update the `$password` variable with your desired DB password.
