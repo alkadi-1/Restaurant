@@ -52,8 +52,8 @@
 | Admin | 99999 | 12345 |
 
 ## Screenshots
-(![Screenshot 2025-06-18 172521](https://github.com/user-attachments/assets/a1f52a80-6871-4d30-8980-ae844c7daa89)
-![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/register.png?raw=true)
+![Screenshot 2025-06-18 172521](https://github.com/user-attachments/assets/a1f52a80-6871-4d30-8980-ae844c7daa89)
+![image](https://github.com/user-attachments/assets/444eca73-f10b-4e66-b88e-dc8bf50bdb31)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/Login.png?raw=true)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/homepageloggedin.png?raw=true)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/reservation.png?raw=true)
