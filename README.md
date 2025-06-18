@@ -73,16 +73,8 @@
 ![image](https://github.com/user-attachments/assets/9de95084-f42b-4049-95e5-7e96a1e37ee0)
 ![image](https://github.com/user-attachments/assets/2db0776e-2be5-4528-bc9a-2fc79a2a9846)
 ![image](https://github.com/user-attachments/assets/2c5f4c0c-f193-4dfb-8a78-0ce8df97f69b)
-
-
-
-
-
-
-![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/statisticspanel.png?raw=true)
-![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/profilespanel.png?raw=true)
-
-
+![image](https://github.com/user-attachments/assets/b12ce40f-2db6-437d-a7b6-c816ab52962f)
+![image](https://github.com/user-attachments/assets/8019fbe5-aae2-49ef-88d5-1c9f7746d440)
 
 
 ## If you want to put a password for the database, change the config.php files.
