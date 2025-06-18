@@ -71,13 +71,13 @@
 ![image](https://github.com/user-attachments/assets/f23d59bd-e01d-4be3-847c-134e5535debe)
 ![image](https://github.com/user-attachments/assets/d47f7235-d029-4697-ba43-113f950415ba)
 ![image](https://github.com/user-attachments/assets/9de95084-f42b-4049-95e5-7e96a1e37ee0)
+![image](https://github.com/user-attachments/assets/2db0776e-2be5-4528-bc9a-2fc79a2a9846)
 
 
 
 
 
 
-![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/cardpayment.png?raw=true)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/salespanel.png?raw=true)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/statisticspanel.png?raw=true)
 ![alt text](https://github.com/Brynlai/RestaurantProject/blob/main/RestaurantProjectImages/profilespanel.png?raw=true)
