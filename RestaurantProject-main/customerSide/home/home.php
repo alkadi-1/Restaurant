@@ -1,7 +1,7 @@
 <?php include_once('../components/header.php')?>
 <!-- Hero Section with Video Background and Text Overlay -->
 <section id="hero" style="position: relative;">
-    <video autoplay loop muted playsinline poster="your-poster-image.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+    <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
         <source src="../image/SteakOnGrillCloseup.mp4" type="video/mp4">
         <!-- Add additional source elements for 
         1.  SteakOnGrillCloseup
@@ -21,7 +21,7 @@
   
    
   <!-- About Section -->
-<section id="about" ">
+<section id="about" >
   <div class="about container">
     <div class="col-right">
         <h1 class="section-title" >About <span>Us</span></h1>
